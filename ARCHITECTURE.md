@@ -9,11 +9,11 @@ The wiki-first approach solves this. Every bot reads from a shared, curated know
 ## Data flow
 
 ```
-External sources (web, job boards, social media)
+External sources (web, job boards, email, social media)
         │
         ▼
 ┌──────────────┐
-│   raw/       │  ← Content Scout, Job Bot deposit unprocessed data
+│   raw/       │  ← Bots deposit unprocessed data here
 └──────┬───────┘
        │ verification + curation
        ▼
@@ -25,30 +25,19 @@ External sources (web, job boards, social media)
        │
        ▼
 ┌──────────────┐
-│   outputs/   │  ← Article Machine, Social Media, Job Bot write final
-│              │     deliverables: posts, articles, applications
+│   outputs/   │  ← Bots write final deliverables:
+│              │     posts, articles, applications, reports
 └──────────────┘
 ```
 
-## Model routing policy
+## Model routing
 
-| Task type | Model | Reason |
-|---|---|---|
-| Content generation (articles, posts) | Claude Sonnet | Quality matters — these are public-facing |
-| Research and scraping | Claude Haiku | High volume, low stakes |
-| Job application drafts | Claude Sonnet | Needs nuance and personalization |
-| Instagram reply drafts | Claude Haiku | Speed over polish, human reviews before posting |
+Each bot uses the right-sized model for its task. Content generation and tasks requiring nuance use a more capable model. High-volume classification tasks like email sorting and initial scraping use a faster, lighter model. Every call is reviewed before shipping — no bot output goes public without human approval.
 
 ## Orchestration
 
-Make.com handles scheduling and routing between bots. Each bot is a Make scenario that calls the Claude API with a specific system prompt and reads/writes to the appropriate folder via Notion API (wiki) or direct file storage (raw/outputs).
-
-Upstash Redis handles rate limiting and deduplication (e.g., don't re-scrape the same job post twice).
+An automation platform handles scheduling and routing between bots. Each bot runs on its own schedule, calls the Claude API with a specific system prompt, and reads/writes to the appropriate wiki folder. Deduplication prevents bots from reprocessing the same input twice.
 
 ## Cost control
 
-Hard cap: **$62/month** across all bots. Enforced via:
-- Prompt caching for repeated system prompts
-- Haiku-first for non-critical tasks
-- Daily usage logging to a Notion dashboard
-- Make.com scenario-level budget alerts
+The system runs under a strict monthly budget enforced through prompt caching, model routing, usage logging, and automation-level budget alerts.
