@@ -1,50 +1,46 @@
-# bots-master (architecture preview)
+# bots-master
 
-**Wiki-first 6-bot system built on Claude Managed Agents.**
+**Wiki-first multi-bot system built on Claude Managed Agents.**
+
+> Status: Early development. Architecture defined, first bots in progress.
 
 ---
 
 ## What it is
 
-A coordinated system of six specialized bots that handle content research, writing, social media, and job search automation. Each bot reads from and writes to a shared knowledge base (the "wiki"), so context accumulates over time instead of being lost between sessions.
+A coordinated system of specialized bots that handle content research, writing, social media, inbox management, and job search automation. Each bot reads from and writes to a shared knowledge base (the "wiki"), so context accumulates over time instead of being lost between sessions.
 
 ## The bots
 
-| Bot | Role |
-|---|---|
-| **Content Scout** | Finds trending topics, news, and content angles across the web |
-| **Interviewer** | Conducts structured research interviews on a topic and logs insights to the wiki |
-| **Article Machine** | Writes long-form articles from wiki research — no hallucination, sources only |
-| **Social Media** | Generates platform-specific posts (LinkedIn, Instagram, X) from wiki content |
-| **Instagram Replies** | Monitors and drafts contextual replies using brand voice |
-| **Job Bot** | Scans job boards, matches against skills profile, drafts tailored applications |
+| # | Bot | Role |
+|---|-----|------|
+| 1 | **Content Scout** | Finds trending topics, news, content angles |
+| 2 | **Interviewer** | Structured research interviews, logs insights to wiki |
+| 3 | **Article Machine** | Writes long-form articles from wiki research |
+| 4 | **Social Media** | Platform-specific posts (LinkedIn, Instagram, X) |
+| 5 | **Instagram Replies** | Brand-voice replies on Instagram |
+| 6 | **Job Bot** | Scans job boards, matches profile, drafts applications |
+| 7 | **Gmail Sorter** | Classifies email, applies labels, feeds relevant data to wiki |
+| 8 | **Finance Analyzer** | Reads transactions periodically, generates summaries |
 
 ## Architecture
 
-The system follows a **Karpathy three-folder structure**:
-
+Karpathy three-folder structure:
 ```
 bots-master/
-├── raw/        ← unprocessed inputs (scraped articles, job posts, notes)
-├── wiki/       ← curated knowledge base (verified facts, insights, decisions)
-└── outputs/    ← final deliverables (posts, articles, applications)
+├── raw/      ← unprocessed inputs
+├── wiki/     ← curated knowledge base
+└── outputs/  ← final deliverables
 ```
 
-Every bot reads from `wiki/` and writes outputs to `outputs/`. Raw data enters through `raw/` and gets promoted to `wiki/` only after verification. This prevents hallucination drift — bots never generate from thin air, only from curated wiki entries.
+Every bot reads from `wiki/` and writes outputs to `outputs/`. Raw data enters through `raw/` and is promoted to `wiki/` only after verification. This prevents hallucination drift.
 
-See [ARCHITECTURE.md](./ARCHITECTURE.md) for the full data flow and model policy.
+## Design principles
 
-## Key decisions
+- **Shared voice document** across all content bots for brand consistency
+- **Prompt caching** on frequently used system prompts to reduce latency and cost
+- **Model routing** — right-sized models per task instead of one-size-fits-all
 
-- **Shared voice document:** All content bots reference a single voice/tone file so brand consistency is automatic.
-- **Prompt caching:** Frequently used system prompts are cached to reduce API costs.
-- **Sonnet-first model policy:** Default to Claude Sonnet for quality. Haiku only for high-volume, low-stakes tasks (like initial web scraping).
-- **Cost cap:** $62/month hard limit across all six bots.
+---
 
-## Stack
-
-`Claude API` · `Make.com` · `Upstash Redis` · `Notion API` · `Telegram Bot API`
-
-## Status
-
-🔧 **In active build** — Content Scout and Article Machine functional. Remaining bots in development.
+*Last updated: 2026-04-12*
