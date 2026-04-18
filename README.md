@@ -10,8 +10,8 @@ No bots are built yet. All 8 are in architectural scoping. This repo documents t
 
 | Bot | Purpose | Status |
 |-----|---------|--------|
-| Job Bot | Poll job listings, match CV, alert via Telegram | Week 1 build priority |
-| Content Scout | Surface trending topics for ElleMentys and GuiaOlim | Scoping |
+| Job Bot | Poll listings and surface relevant matches via Telegram | Week 1 build priority |
+| Content Scout | Surface trending topics for content brands | Scoping |
 | Interviewer | Mock interview practice with feedback | Scoping |
 | Article Machine | Draft long-form content from outlines | Scoping |
 | Social Media | Schedule and format posts across platforms | Scoping |
@@ -26,10 +26,6 @@ No bots are built yet. All 8 are in architectural scoping. This repo documents t
 - Upstash (Redis for state and rate limiting)
 - Notion (triple-logging across 3 databases)
 - Telegram (delivery and alerts)
-
-## Budget Cap
-
-$62/month across all services.
 
 ## Architecture
 
