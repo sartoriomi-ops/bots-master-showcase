@@ -1,46 +1,40 @@
-# bots-master
+﻿# Bots Master Showcase
 
-**Wiki-first multi-bot system built on Claude Managed Agents.**
+A wiki-first multi-bot system built on Claude API, Make.com, Upstash, Notion, and Telegram.
 
-> Status: Early development. Architecture defined, first bots in progress.
+## Status: Week 0 — Scoping Phase
 
----
+No bots are built yet. All 8 are in architectural scoping. This repo documents the journey from zero to a production bot fleet.
 
-## What it is
+## Planned Bots (8 total)
 
-A coordinated system of specialized bots that handle content research, writing, social media, inbox management, and job search automation. Each bot reads from and writes to a shared knowledge base (the "wiki"), so context accumulates over time instead of being lost between sessions.
+| Bot | Purpose | Status |
+|-----|---------|--------|
+| Job Bot | Poll job listings, match CV, alert via Telegram | Week 1 build priority |
+| Content Scout | Surface trending topics for ElleMentys and GuiaOlim | Scoping |
+| Interviewer | Mock interview practice with feedback | Scoping |
+| Article Machine | Draft long-form content from outlines | Scoping |
+| Social Media | Schedule and format posts across platforms | Scoping |
+| IG Replies | Auto-respond to Instagram comments | Scoping |
+| Gmail Sorter | Classify and prioritize inbox | Scoping |
+| Finance Analyzer | Track expenses and flag anomalies | Scoping |
 
-## The bots
+## Stack
 
-| # | Bot | Role |
-|---|-----|------|
-| 1 | **Content Scout** | Finds trending topics, news, content angles |
-| 2 | **Interviewer** | Structured research interviews, logs insights to wiki |
-| 3 | **Article Machine** | Writes long-form articles from wiki research |
-| 4 | **Social Media** | Platform-specific posts (LinkedIn, Instagram, X) |
-| 5 | **Instagram Replies** | Brand-voice replies on Instagram |
-| 6 | **Job Bot** | Scans job boards, matches profile, drafts applications |
-| 7 | **Gmail Sorter** | Classifies email, applies labels, feeds relevant data to wiki |
-| 8 | **Finance Analyzer** | Reads transactions periodically, generates summaries |
+- Claude API (Sonnet for speed, Opus for complex tasks)
+- Make.com (sole automation platform)
+- Upstash (Redis for state and rate limiting)
+- Notion (triple-logging across 3 databases)
+- Telegram (delivery and alerts)
+
+## Budget Cap
+
+$62/month across all services.
 
 ## Architecture
 
-Karpathy three-folder structure:
-```
-bots-master/
-├── raw/      ← unprocessed inputs
-├── wiki/     ← curated knowledge base
-└── outputs/  ← final deliverables
-```
+Each bot follows a wiki-first approach: full specification documented before any code is written. See the /wiki folder for bot specs as they are completed.
 
-Every bot reads from `wiki/` and writes outputs to `outputs/`. Raw data enters through `raw/` and is promoted to `wiki/` only after verification. This prevents hallucination drift.
+## Author
 
-## Design principles
-
-- **Shared voice document** across all content bots for brand consistency
-- **Prompt caching** on frequently used system prompts to reduce latency and cost
-- **Model routing** — right-sized models per task instead of one-size-fits-all
-
----
-
-*Last updated: 2026-04-12*
+Michelle Sartorio — [michellesartorio.com](https://michellesartorio.com)
