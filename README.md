@@ -44,18 +44,6 @@ Every architecture decision is documented before any code is written.
 
 ## 🏗️ How it works
 
-┌─────────────┐     ┌─────────────┐     ┌─────────────┐
-│  Trigger     │────▶│  Make.com    │────▶│  Claude API  │
-│  (Telegram / │     │  Scenario    │     │  Processing  │
-│   Cron)      │     │              │     │              │
-└─────────────┘     └──────┬───────┘     └──────┬───────┘
-│                     │
-▼                     ▼
-┌─────────────┐     ┌─────────────┐
-│  Notion     │     │  Telegram    │
-│  Log        │     │  Output      │
-└─────────────┘     └─────────────┘
-
 Each bot runs as a standalone Make.com scenario. No shared state between bots. Each one has its own Notion log, error handling, and Telegram output channel.
 
 ---
