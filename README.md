@@ -1,36 +1,45 @@
-﻿# Bots Master Showcase
+<div align="center">
 
-A wiki-first multi-bot system built on Claude API, Make.com, Upstash, Notion, and Telegram.
+# 🤖 Bots Master Showcase
 
-## Status: Week 0 — Scoping Phase
+**An 8-bot automation system for content, job search, and productivity.**
 
-No bots are built yet. All 8 are in architectural scoping. This repo documents the journey from zero to a production bot fleet.
+![Status](https://img.shields.io/badge/Status-Architecture%20Phase-yellow?style=for-the-badge)
+![Bots](https://img.shields.io/badge/Bots%20Planned-8-blue?style=for-the-badge)
+![Built](https://img.shields.io/badge/Built-0%20of%208-lightgrey?style=for-the-badge)
 
-## Planned Bots (8 total)
+![Claude API](https://img.shields.io/badge/Claude_API-D97757?style=flat-square&logo=claude&logoColor=white)
+![Make.com](https://img.shields.io/badge/Make.com-6D00CC?style=flat-square&logo=make&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-000?style=flat-square&logo=notion&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)
 
-| Bot | Purpose | Status |
-|-----|---------|--------|
-| Job Bot | Poll listings and surface relevant matches via Telegram | Week 1 build priority |
-| Content Scout | Surface trending topics for content brands | Scoping |
-| Interviewer | Mock interview practice with feedback | Scoping |
-| Article Machine | Draft long-form content from outlines | Scoping |
-| Social Media | Schedule and format posts across platforms | Scoping |
-| IG Replies | Auto-respond to Instagram comments | Scoping |
-| Gmail Sorter | Classify and prioritize inbox | Scoping |
-| Finance Analyzer | Track expenses and flag anomalies | Scoping |
+</div>
 
-## Stack
+---
 
-- Claude API (Sonnet for speed, Opus for complex tasks)
-- Make.com (sole automation platform)
-- Upstash (Redis for state and rate limiting)
-- Notion (triple-logging across 3 databases)
-- Telegram (delivery and alerts)
+## 💡 About
 
-## Architecture
+A wiki-first multi-bot system. Each bot handles one job. All bots share the same core: Claude API for intelligence, Make.com for orchestration, Notion for logging, and Telegram for delivery.
 
-Each bot follows a wiki-first approach: full specification documented before any code is written. See the /wiki folder for bot specs as they are completed.
+Every architecture decision is documented before any code is written.
 
-## Author
+---
 
-Michelle Sartorio — [michellesartorio.com](https://michellesartorio.com)
+## 📋 Bot Roster
+
+| # | Bot | Purpose | Status |
+|:---:|---|---|:---:|
+| 1 | **Job Bot** | Scan job boards, score listings, notify via Telegram | 🟡 Week 1 |
+| 2 | **Content Scout** | Find trending topics and news angles for content brands | ⚪ Scoped |
+| 3 | **Interviewer** | Generate role-specific interview prep questions | ⚪ Scoped |
+| 4 | **Article Machine** | Draft long-form content from outlines | ⚪ Scoped |
+| 5 | **Social Media** | Adapt content across platforms and formats | ⚪ Scoped |
+| 6 | **IG Replies** | Auto-draft Instagram comment replies | ⚪ Scoped |
+| 7 | **Gmail Sorter** | Classify and prioritize inbox | ⚪ Scoped |
+| 8 | **Finance Analyzer** | Parse bank data and track spending | ⚪ Scoped |
+
+> 🟢 Live  🟡 In progress  ⚪ Scoped
+
+---
+
+## 🏗️ How it works
