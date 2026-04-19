@@ -43,3 +43,49 @@ Every architecture decision is documented before any code is written.
 ---
 
 ## 🏗️ How it works
+
+┌─────────────┐     ┌─────────────┐     ┌─────────────┐
+│  Trigger     │────▶│  Make.com    │────▶│  Claude API  │
+│  (Telegram / │     │  Scenario    │     │  Processing  │
+│   Cron)      │     │              │     │              │
+└─────────────┘     └──────┬───────┘     └──────┬───────┘
+│                     │
+▼                     ▼
+┌─────────────┐     ┌─────────────┐
+│  Notion     │     │  Telegram    │
+│  Log        │     │  Output      │
+└─────────────┘     └─────────────┘
+
+Each bot runs as a standalone Make.com scenario. No shared state between bots. Each one has its own Notion log, error handling, and Telegram output channel.
+
+---
+
+## 🗺️ Roadmap
+
+- [x] Define all 8 bot scopes
+- [x] Lock architecture decisions in wiki
+- [x] Choose stack (Claude API + Make.com + Notion + Telegram)
+- [ ] Build Job Bot (Week 1 priority)
+- [ ] Build Content Scout
+- [ ] Build remaining 6 bots
+- [ ] Integration testing across all bots
+- [ ] Full system documentation
+
+---
+
+## 📂 Repo structure
+bots-master-showcase/
+├── wiki/              # Architecture decisions and bot specs
+├── docs/              # Setup guides and API references
+└── README.md
+
+---
+
+<div align="center">
+
+**This repo documents the architecture and planning phase.**
+Code and scenarios will be added as each bot ships.
+
+[![Portfolio](https://img.shields.io/badge/Portfolio-michellesartorio.com-58A6FF?style=flat-square&logo=googlechrome&logoColor=white)](https://michellesartorio.com)
+
+</div>
