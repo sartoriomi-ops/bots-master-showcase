@@ -63,8 +63,7 @@ Each bot runs as a standalone Make.com scenario. No shared state between bots. E
 
 ## 📂 Repo structure
 bots-master-showcase/
-├── wiki/              # Architecture decisions and bot specs
-├── docs/              # Setup guides and API references
+├── ARCHITECTURE.md    # System design and data flow
 └── README.md
 
 ---
