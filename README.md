@@ -12,6 +12,7 @@
 ![Make.com](https://img.shields.io/badge/Make.com-6D00CC?style=flat-square&logo=make&logoColor=white)
 ![Notion](https://img.shields.io/badge/Notion-000?style=flat-square&logo=notion&logoColor=white)
 ![Telegram](https://img.shields.io/badge/Telegram-26A5E4?style=flat-square&logo=telegram&logoColor=white)
+![Upstash Redis](https://img.shields.io/badge/Upstash_Redis-00E9A3?style=flat-square&logo=upstash&logoColor=white)
 
 </div>
 
@@ -44,7 +45,7 @@ Every architecture decision is documented before any code is written.
 
 ## 🏗️ How it works
 
-Each bot runs as a standalone Make.com scenario. No shared state between bots. Each one has its own Notion log, error handling, and Telegram output channel.
+Architecture: wiki-first with shared state. Each bot follows a three-folder model (raw → wiki → outputs). Every bot reads three shared context files before running: voice document, banned words list, and brand rules. This keeps output consistent across all 8 bots without duplicating rules per scenario.
 
 ---
 
