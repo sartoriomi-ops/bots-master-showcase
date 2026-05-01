@@ -64,9 +64,10 @@ Architecture: wiki-first with shared state. Each bot follows a three-folder mode
 
 ## 📂 Repo structure
 bots-master-showcase/
-├── wiki/              # Architecture decisions and bot specs
-├── docs/              # Setup guides and API references
-└── README.md
+├── README.md          # Project overview
+└── ARCHITECTURE.md    # System architecture and data flow
+
+> Additional folders (wiki, docs, bot scenarios) will be added as each bot ships.
 
 ---
 
